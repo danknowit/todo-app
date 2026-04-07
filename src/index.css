@@ -12,7 +12,7 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
 }
 
 /* App */
@@ -21,11 +21,22 @@ body {
   max-width: 520px;
 }
 
+.app-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.todo-count {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
 .app h1 {
   font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin-bottom: 1.5rem;
   color: #111;
 }
 
@@ -33,12 +44,12 @@ body {
 .todo-input {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 
 .todo-input input {
   flex: 1;
-  padding: 0.65rem 0.9rem;
+  padding: 0.7rem 1rem;
   border: 1.5px solid #ddd;
   border-radius: 8px;
   font-size: 0.95rem;
@@ -52,11 +63,11 @@ body {
 }
 
 .todo-input input::placeholder {
-  color: #aaa;
+  color: #bbb;
 }
 
 .btn-add {
-  padding: 0.65rem 1.2rem;
+  padding: 0.7rem 1.25rem;
   background: #1a1a1a;
   color: #fff;
   border: none;
@@ -79,12 +90,15 @@ body {
 /* Filter bar */
 .filter-bar {
   display: flex;
+  align-items: center;
   gap: 0.25rem;
-  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1.5px solid #ebebeb;
 }
 
 .filter-btn {
-  padding: 0.35rem 0.85rem;
+  padding: 0.3rem 0.8rem;
   background: transparent;
   color: #888;
   border: 1.5px solid transparent;
@@ -108,9 +122,9 @@ body {
 
 .btn-clear {
   margin-left: auto;
-  padding: 0.35rem 0.85rem;
+  padding: 0.3rem 0.8rem;
   background: transparent;
-  color: #aaa;
+  color: #bbb;
   border: none;
   border-radius: 6px;
   font-size: 0.85rem;
@@ -128,9 +142,10 @@ body {
 }
 
 .empty-state {
-  color: #aaa;
+  text-align: center;
+  color: #bbb;
   font-size: 0.9rem;
-  padding: 1rem 0;
+  padding: 2.5rem 0;
 }
 
 /* Todo item */
@@ -138,12 +153,16 @@ body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1rem;
   background: #fff;
   border-radius: 8px;
   margin-bottom: 0.5rem;
   border: 1.5px solid #ebebeb;
   transition: border-color 0.15s;
+}
+
+.todo-item:last-child {
+  margin-bottom: 0;
 }
 
 .todo-item:hover {
@@ -158,10 +177,20 @@ body {
   flex-shrink: 0;
 }
 
+.todo-edit-input {
+  flex: 1;
+  padding: 0.1rem 0.4rem;
+  border: 1.5px solid #555;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+}
+
 .todo-item-text {
   flex: 1;
   font-size: 0.95rem;
-  line-height: 1.4;
+  line-height: 1.5;
   transition: color 0.15s;
 }
 
@@ -178,8 +207,13 @@ body {
   border-radius: 6px;
   font-size: 0.8rem;
   cursor: pointer;
-  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s, border-color 0.15s, background 0.15s;
   flex-shrink: 0;
+}
+
+.todo-item:hover .btn-delete {
+  opacity: 1;
 }
 
 .btn-delete:hover {

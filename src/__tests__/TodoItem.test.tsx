@@ -9,26 +9,26 @@ const completedTodo: Todo = { ...todo, completed: true }
 
 describe('TodoItem', () => {
   it('renders the todo text', () => {
-    render(<TodoItem todo={todo} onToggle={vi.fn()} onDelete={vi.fn()} />)
+    render(<TodoItem todo={todo} onToggle={vi.fn()} onDelete={vi.fn()} onUpdate={vi.fn()} />)
     expect(screen.getByText('Test task')).toBeInTheDocument()
   })
 
   it('applies line-through style when completed', () => {
-    render(<TodoItem todo={completedTodo} onToggle={vi.fn()} onDelete={vi.fn()} />)
+    render(<TodoItem todo={completedTodo} onToggle={vi.fn()} onDelete={vi.fn()} onUpdate={vi.fn()} />)
     const label = screen.getByText('Test task')
-    expect(label).toHaveStyle({ textDecoration: 'line-through' })
+    expect(label).toHaveClass('todo-item-text', 'completed')
   })
 
   it('calls onToggle with the correct id when checkbox is clicked', async () => {
     const onToggle = vi.fn()
-    render(<TodoItem todo={todo} onToggle={onToggle} onDelete={vi.fn()} />)
+    render(<TodoItem todo={todo} onToggle={onToggle} onDelete={vi.fn()} onUpdate={vi.fn()} />)
     await userEvent.click(screen.getByRole('checkbox'))
     expect(onToggle).toHaveBeenCalledWith('1')
   })
 
   it('calls onDelete with the correct id when delete button is clicked', async () => {
     const onDelete = vi.fn()
-    render(<TodoItem todo={todo} onToggle={vi.fn()} onDelete={onDelete} />)
+    render(<TodoItem todo={todo} onToggle={vi.fn()} onDelete={onDelete} onUpdate={vi.fn()} />)
     await userEvent.click(screen.getByRole('button', { name: /delete/i }))
     expect(onDelete).toHaveBeenCalledWith('1')
   })

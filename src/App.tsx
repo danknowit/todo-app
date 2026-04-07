@@ -6,7 +6,7 @@ import { FilterBar } from './components/FilterBar'
 import type { Filter } from './components/FilterBar'
 
 export default function App() {
-  const { todos, addTodo, toggleTodo, deleteTodo, clearCompleted } = useTodos()
+  const { todos, addTodo, toggleTodo, updateTodo, deleteTodo, clearCompleted } = useTodos()
   const [filter, setFilter] = useState<Filter>('all')
 
   const filtered = todos.filter((todo) => {
@@ -15,9 +15,18 @@ export default function App() {
     return true
   })
 
+  const activeCount = todos.filter((t) => !t.completed).length
+
   return (
     <div className="app">
-      <h1>Todo</h1>
+      <div className="app-header">
+        <h1>Todo</h1>
+        {todos.length > 0 && (
+          <span className="todo-count">
+            {activeCount} {activeCount === 1 ? 'item' : 'items'} left
+          </span>
+        )}
+      </div>
       <TodoInput onAdd={addTodo} />
       <FilterBar
         current={filter}
@@ -25,7 +34,7 @@ export default function App() {
         hasCompleted={todos.some((t) => t.completed)}
         onClearCompleted={clearCompleted}
       />
-      <TodoList todos={filtered} onToggle={toggleTodo} onDelete={deleteTodo} />
+      <TodoList todos={filtered} onToggle={toggleTodo} onUpdate={updateTodo} onDelete={deleteTodo} />
     </div>
   )
 }
