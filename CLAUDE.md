@@ -13,7 +13,17 @@
 ## Code Style
 - Use TypeScript strictly (no any)
 - Keep components small and readable
-- Prefer hooks for logic
+- Use clear naming
+- Avoid unnecessary complexity
+
+## Structure
+- Separate UI and logic
+- Use reusable components
+- Keep files focused
+
+## Testing
+- Write basic tests for logic when relevant
+- Do not over-test simple UI
 
 ## AI Workflow
 - Plan before coding
