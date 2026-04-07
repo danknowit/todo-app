@@ -25,7 +25,12 @@
 - Write basic tests for logic when relevant
 - Do not over-test simple UI
 
+## Review Priority
+- Prioritize correctness, bugs, and edge cases over style
+- Ignore minor formatting issues unless they affect correctness
+
 ## AI Workflow
+- Read CLAUDE.md and relevant skill files before making changes
 - Plan before coding
 - Make minimal changes
 - Explain what was changed
