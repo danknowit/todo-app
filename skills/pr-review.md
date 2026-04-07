@@ -45,3 +45,4 @@ Avoid:
 - Large refactors
 - Rewriting code instead of reviewing
 - Suggestions without clear evidence
+- Formatting-only issues (e.g. trailing whitespace, missing newline at end of file)
